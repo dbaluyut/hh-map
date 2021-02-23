@@ -1,0 +1,25 @@
+.mapWrapper {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* margin-top: 4rem; */
+  top: 0px;
+  background-color: lightblue;
+}
+
+.test {
+  width: 4rem;
+  height: 4rem;
+  margin-top: 10rem;
+  color: red;
+  z-index: 99;
+}
+
+.marker {
+  border: 1px solid red;
+  height: 2rem;
+  width: 2rem;
+}
