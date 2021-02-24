@@ -1,9 +1,25 @@
 import React, { Component } from "react";
 import styles from "./Map.module.css";
 import GoogleMapReact from "google-map-react";
-import RoomIcon from "@material-ui/icons/Room";
+import VenueMarker from "./VenueMarkers";
+import LocationOnRoundedIcon from "@material-ui/icons/LocationOnRounded";
+import venues from "../../db.json";
 
 export default function Map() {
+  const currDate = new Date();
+  const currTime = Number(
+    currDate.getHours().toString() + currDate.getMinutes().toString()
+  );
+  const currDay = currDate.getDay();
+  const filteredVenues = venues.filter((item) => {
+    if (
+      item.day == currDay &&
+      item.happy_hr_start < currTime &&
+      item.happy_hr_stop > currTime
+    ) {
+      return item;
+    }
+  });
   function getLocation() {
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -25,19 +41,27 @@ export default function Map() {
               key: "AIzaSyDuSYxMht_3bQ95VKJVdKQTgYl3r3XWXqQ",
             }}
             defaultCenter={{
-              lat: 36.088617,
-              lng: -115.0236456,
+              lat: 36.165024,
+              lng: -115.14408,
             }}
-            defaultZoom={13}
+            defaultZoom={14.5}
             style={{ zIndex: "-2" }}
           >
-            <div
-              className={styles.marker}
-              lat={36.088617}
-              lng={-115.0236456}
-              text="My Marker"
-              style={{ fontSize: "3rem" }}
-            />
+            {/* marker */}
+            {filteredVenues.map((item) => {
+              return (
+                // <div
+                //   className={styles.marker}
+                //   lat={item.lat}
+                //   lng={item.lng}
+                //   text="My Marker"
+                //   style={{ fontSize: "3rem" }}
+                // >
+                //   <LocationOnRoundedIcon />
+                // </div>
+                <VenueMarker lat={item.lat} lng={item.lng} />
+              );
+            })}
           </GoogleMapReact>
         </div>
         <button className={styles.test} onClick={() => getLocation()}>
