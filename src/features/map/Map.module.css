@@ -1,0 +1,42 @@
+.mapWrapper {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* margin-top: 4rem; */
+  top: 0px;
+  background-color: lightblue;
+}
+
+.test {
+  width: 4rem;
+  height: 4rem;
+  margin-top: 10rem;
+  color: red;
+  z-index: 99;
+}
+
+.marker {
+  border: 1px solid red;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  color: rgb(250, 128, 15);
+  position: relative;
+  /* box-shadow: 4px 4px 4px -4px rgba(0, 0, 0, 0.75); */
+}
+
+.marker:hover {
+  cursor: pointer;
+}
+
+.expandedVenue {
+  width: 14rem;
+  height: 8rem;
+  border: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+}
